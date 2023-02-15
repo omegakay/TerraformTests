@@ -1,16 +1,14 @@
 # Configure the AWS Provider
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-    }
-  }
-}
-
 provider "aws" {
-  region = "eu-west-1"
+  region = var.region
 }
 
+# Create VPC
+module "vpc" {
+  source = "../module/vpc"
+}
+
+# Create a budget
 resource "aws_budgets_budget" "Presupuesto_mensual" {
   name              = "presupuesto_mensual"
   budget_type       = "COST"
