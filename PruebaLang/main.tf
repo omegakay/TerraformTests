@@ -14,6 +14,12 @@ module "security_groups" {
   vpc_id = module.vpc.vpc_id
 }
 
+# Create ecs task execution role
+module "ecs_tasks_execution_role" {
+  source       = "../modules/ecs-task-execution-role"
+  project_name = module.vpc.project_name
+}
+
 # Create a budget
 resource "aws_budgets_budget" "Presupuesto_mensual" {
   name              = "presupuesto_mensual"
