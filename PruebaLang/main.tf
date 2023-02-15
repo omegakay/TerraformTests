@@ -5,7 +5,12 @@ provider "aws" {
 
 # Create VPC
 module "vpc" {
-  source = "../module/vpc"
+  source = "../modules/vpc"
+}
+
+# Create Security Groups
+module "security-groups" {
+    soruce = "../modules/security-groups"
 }
 
 # Create a budget
