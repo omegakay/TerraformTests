@@ -3,3 +3,11 @@ variable "region" {
   type        = string
   default     = "eu-west-1"
 }
+
+variable "domain_name" {
+  default = "langstoretest.com"
+}
+
+variable "alternative_domain_name" {
+  default = "*.langstoretest.com"
+}
