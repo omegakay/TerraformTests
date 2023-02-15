@@ -9,8 +9,9 @@ module "vpc" {
 }
 
 # Create Security Groups
-module "security-groups" {
-    soruce = "../modules/security-groups"
+module "security_groups" {
+  source = "../modules/security-groups"
+  vpc_id = module.vpc.vpc_id
 }
 
 # Create a budget
