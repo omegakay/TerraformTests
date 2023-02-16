@@ -38,6 +38,19 @@ module "alb" {
   certificate_arn       = module.acm.certificate_arn
 }
 
+# Create ECS
+module "ecs" {
+  source                       = "../modules/ecs"
+  project_name                 = module.vpc.project_name
+  ecs_tasks_execution_role_arn = module.ecs_tasks_execution_role.ecs_tasks_execution_role_arn
+  container_img                = var.container_img
+  region                       = var.region
+  public_subnet_az1_id         = module.vpc.public_subnet_az1_id
+  public_subnet_az2_id         = module.vpc.public_subnet_az2_id
+  ecs_security_group_id        = module.security_groups.ecs_security_group_id
+  alb_target_group_arn         = module.alb.alb_target_group_arn
+}
+
 # Create a budget
 resource "aws_budgets_budget" "Presupuesto_mensual" {
   name              = "presupuesto_mensual"

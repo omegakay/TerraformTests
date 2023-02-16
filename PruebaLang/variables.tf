@@ -5,9 +5,13 @@ variable "region" {
 }
 
 variable "domain_name" {
-  default = "langstoretest.com"
+  default = "storelangprueba1.com"
 }
 
 variable "alternative_domain_name" {
-  default = "*.langstoretest.com"
+  default = "*.storelangprueba1.com"
+}
+
+variable "container_img" {
+  default = "public.ecr.aws/e7u8c7i6/pruebalang.ai:latest"
 }
